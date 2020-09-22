@@ -1,0 +1,5 @@
+name: AstroniaTimezone
+version: ${project.version}
+main: com.flash.astroniatimezone.AstroniaTimezone
+authors: [ flash1110 ]
+description: Timezone Plugin for Astronia (Created to be expandable as a Core/Base)
