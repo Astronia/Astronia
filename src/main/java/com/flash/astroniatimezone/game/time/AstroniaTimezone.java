@@ -9,45 +9,45 @@ import java.util.stream.Stream;
 
 public enum AstroniaTimezone {
 
-    ACT("ACT", "Australian Central Time", "ACT"),
-    AET("AET", "Australian Eastern Time", "AET"),
-    AGT("AGT", "Argentina Standard Time", "AGT"),
-    ART("ART", "Arabic Standard Time", "Egypt Standard Time", "ART"),
-    AST("AST", "Alaska Standard Time", "AST"),
-    BET("BET", "Brazil Eastern Time", "BET"),
-    BST("BST", "Bangladesh Standard Time", "BST"),
-    CAT("CAT", "Central African Time", "CAT"),
-    CET("CET", "Central European Time", "CET"),
-    CNT("CNT", "Canada Newfoundland Time", "CNT"),
-    CST("CST", "Central Standard Time", "Central", "CST"),
-    CST6CDT("CST6CDT", "CDT", "Central Daylight Time", "Central Daylight", "CDT"),
-    CTT("CTT", "China Taiwan Time", "CTT"),
-    EAT("EAT", "Eastern African Time", "EAT"),
-    ECT("ECT", "European Central Time", "ECT"),
-    EET("EET", "Eastern European Time", "EET"),
-    EST("EST", "Eastern Standard Time", "Eastern", "EST"),
-    EST5EDT("EST5EDT", "EDT", "Eastern Daylight Time", "Eastern Daylight"),
-    GMT("GMT", "Greenwich Mean Time", "Greenwich", "GMT"),
-    HST("HST", "Hawaii Standard Time", "Hawaii", "HST"),
-    IET("IET", "Indiana Eastern Standard Time", "Indiana", "IET"),
-    IST("IST", "India Standard Time", "India", "IST"),
-    JST("JST", "Japan Standard Time", "Japan", "JST"),
-    MET("MET", "Middle East Time", "MET"),
-    MIT("MIT","Midway Islands Time", "MIT"),
-    MST("MST","Mountain Standard Time", "Mountain", "MST"),
-    MST7MDT("MST7MDT", "Mountain Daylight Time", "MDT", "Mountain Daylight"),
-    NET("NET", "Near East Time", "NET"),
-    NST("NST", "New Zealand Standard Time", "New Zealand", "NST"),
-    PLT("PLT", "Pakistan Lahore Time", "PLT"),
-    PNT("PNT", "Phoenix Standard Time", "PNT"),
-    PRC("PRC", "China Standard Time", "China", "PRC"),
-    PRT("PRT", "Puerto Rico and US Virgin Islands Time", "Puerto Rico", "US Virgin Islands", "PRT"),
-    PST("PST", "Pacific Standard Time", "Pacific", "PST"),
-    PST8PDT("PST8PDT", "PDT", "Pacific Daylight Time"),
-    ROK("ROK", "Korean Standard Time", "KST", "Korea", "ROK"),
-    SST("SST", "Solomon Standard Time", "SST"),
-    UTC("UTC", "Coordinated Universal Time", "UTC", "UCT"),
-    VST("VST", "Vietnam Standard Time", "Vietnam", "VST");
+    ACT("ACT", "australian central time", "act"),
+    AET("AET", "australian eastern time", "aet"),
+    AGT("AGT", "argentina standard aime", "agt"),
+    ART("ART", "arabic standard time", "egypt standard time", "art"),
+    AST("AST", "alaska standard time", "ast"),
+    BET("BET", "brazil eastern time", "bet"),
+    BST("BST", "bangladesh standard time", "bst"),
+    CAT("CAT", "central african time", "cat"),
+    CET("CET", "central european time", "cet"),
+    CNT("CNT", "canada newfoundland time", "cnt"),
+    CST("CST", "central standard time", "central", "cst"),
+    CST6CDT("CST6CDT", "cdt", "central daylight time", "central daylight", "cdt"),
+    CTT("CTT", "china taiwan time", "ctt"),
+    EAT("EAT", "eastern african time", "eat"),
+    ECT("ECT", "european central time", "ect"),
+    EET("EET", "eastern european time", "eet"),
+    EST("EST", "eastern standard time", "eastern", "est"),
+    EST5EDT("EST5EDT", "edt", "eastern daylight time", "eastern daylight"),
+    GMT("GMT", "greenwich mean time", "greenwich", "gmt"),
+    HST("HST", "hawaii standard time", "hawaii", "hst"),
+    IET("IET", "indiana eastern standard time", "indiana", "iet"),
+    IST("IST", "india standard time", "india", "ist"),
+    JST("JST", "japan standard time", "japan", "jst"),
+    MET("MET", "middle east time", "met"),
+    MIT("MIT","midway islands time", "mit"),
+    MST("MST","mountain standard time", "mountain", "mst"),
+    MST7MDT("MST7MDT", "mountain daylight time", "mdt", "mountain daylight"),
+    NET("NET", "near east time", "net"),
+    NST("NST", "new zealand standard time", "new zealand", "nst"),
+    PLT("PLT", "pakistan lahore time", "plt"),
+    PNT("PNT", "phoenix standard time", "pnt"),
+    PRC("PRC", "china standard time", "china", "prc"),
+    PRT("PRT", "puerto rico and us virgin islands time", "puerto rico", "us virgin islands", "prt"),
+    PST("PST", "pacific standard time", "pacific", "pst"),
+    PST8PDT("PST8PDT", "pdt", "pacific daylight time"),
+    ROK("ROK", "korean standard time", "kst", "korea", "rok"),
+    SST("SST", "solomon standard time", "sst"),
+    UTC("UTC", "coordinated universal time", "utc", "uct"),
+    VST("VST", "vietnam standard time", "vietnam", "vst");
 
 
     @Getter
@@ -61,17 +61,23 @@ public enum AstroniaTimezone {
     }
 
     public static String getIDFromName(String name) {
-        return getTimezoneByName(name).getId();
+        return gettimezoneByName(name).getId();
     }
 
-    public static AstroniaTimezone getTimezoneByName(String name) {
-        for (AstroniaTimezone zone : values()) {
+    public static AstroniaTimezone gettimezoneByName(String name) {
+       return Arrays.stream(values())
+                .filter((zone -> zone.getNames().contains(name.toLowerCase())))
+                .findFirst()
+                .orElse(AstroniaTimezone.UTC);
+    }
+
+    /*
+        for (Astroniatimezone zone : values()) {
             for (String names : zone.getNames()) {
                 if (names.equalsIgnoreCase(name)) {
                     return zone;
                 }
             }
         }
-        return AstroniaTimezone.UTC;
-    }
+        return Astroniatimezone.UTC;*/
 }

@@ -31,7 +31,7 @@ public class TimeCommand {
 
         String zone = timezoneName.toString();
 
-        if (getTime(zone) == "" || AstroniaTimezone.getTimezoneByName(zone) == null) {
+        if (getTime(zone) == "" || AstroniaTimezone.gettimezoneByName(zone) == null) {
             player.sendMessage(C.color("&cPlease enter a valid Timezone"));
             return;
         }
@@ -47,7 +47,7 @@ public class TimeCommand {
         Calendar calendar = Calendar.getInstance();
         TimeZone fromTimeZone = calendar.getTimeZone();
 
-        AstroniaTimezone timezone = AstroniaTimezone.getTimezoneByName(string);
+        AstroniaTimezone timezone = AstroniaTimezone.gettimezoneByName(string);
 
         if (timezone == null)
             timezone = AstroniaTimezone.UTC;
@@ -77,11 +77,11 @@ public class TimeCommand {
     }
 
     private String getGreeting(int hours) {
-        if (hours > 5 && hours < 11) {
+        if (hours >= 5 && hours <= 11) {
             return "&a&lGood Morning!";
-        } else if (hours > 11 && hours < 17) {
+        } else if (hours > 11 && hours <= 17) {
             return "&e&lGood Afternoon!";
-        } else if (hours > 17 && hours < 20) {
+        } else if (hours > 17 && hours <= 19) {
             return "&c&lGood Evening!";
         } else {
             return "&9&lGood Night!";
