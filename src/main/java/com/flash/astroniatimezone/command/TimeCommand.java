@@ -3,6 +3,7 @@ package com.flash.astroniatimezone.command;
 import com.flash.astroniatimezone.api.chat.C;
 import com.flash.astroniatimezone.api.command.Command;
 import com.flash.astroniatimezone.api.command.CommandData;
+import com.flash.astroniatimezone.game.time.AstroniaTimezone;
 import org.bukkit.entity.Player;
 
 import java.util.Calendar;
@@ -19,12 +20,23 @@ public class TimeCommand {
             return;
         }
 
-        if (getTime(data.getArg(0)) == "") {
+        StringBuilder timezoneName = new StringBuilder();
+        for (int i = 0; i < data.getArgs().length; i++) {
+            if (i == data.getArgs().length - 1) {
+                timezoneName.append(data.getArg(i));
+            } else {
+                timezoneName.append(data.getArg(i)).append(" ");
+            }
+        }
+
+        String zone = timezoneName.toString();
+
+        if (getTime(zone) == "" || AstroniaTimezone.getTimezoneByName(zone) == null) {
             player.sendMessage(C.color("&cPlease enter a valid Timezone"));
             return;
         }
 
-        player.sendMessage(C.color(getTime(data.getArg(0))));
+        player.sendMessage(C.color(getTime(zone)));
     }
 
     private String getTime() {
@@ -34,7 +46,13 @@ public class TimeCommand {
     private String getTime(String string) {
         Calendar calendar = Calendar.getInstance();
         TimeZone fromTimeZone = calendar.getTimeZone();
-        TimeZone toTimeZone = TimeZone.getTimeZone(string);
+
+        AstroniaTimezone timezone = AstroniaTimezone.getTimezoneByName(string);
+
+        if (timezone == null)
+            timezone = AstroniaTimezone.UTC;
+
+        TimeZone toTimeZone = TimeZone.getTimeZone(timezone.getId());
 
         if (toTimeZone == null) {
             return "";

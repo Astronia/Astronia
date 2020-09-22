@@ -1,6 +1,6 @@
 package com.flash.astroniatimezone.listeners;
 
-import com.flash.astroniatimezone.AstroniaTimezone;
+import com.flash.astroniatimezone.Main;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -19,6 +19,6 @@ public class ListenerManager {
     }
 
     public void registerListener(Listener listener) {
-        pluginManager.registerEvents(listener, AstroniaTimezone.getInstance());
+        pluginManager.registerEvents(listener, Main.getInstance());
     }
 }

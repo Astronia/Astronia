@@ -5,9 +5,9 @@ import com.flash.astroniatimezone.listeners.ListenerManager;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class AstroniaTimezone extends JavaPlugin {
+public final class Main extends JavaPlugin {
 
-    @Getter static AstroniaTimezone instance;
+    @Getter static Main instance;
 
     @Getter private CommandManager commandManager;
     @Getter private ListenerManager listenerManager;
