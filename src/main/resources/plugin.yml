@@ -1,5 +1,6 @@
-name: Main
+name: Astronia
 version: ${project.version}
 main: com.flash.astroniatimezone.Main
 authors: [ flash1110 ]
 description: Main Plugin for Astronia (Created to be expandable as a Core/Base)
+depends: [Scyther, Vault]

@@ -13,6 +13,7 @@ public class CommandManager {
     }
 
     public void registerCommands() {
+        registerCommands(new CaneTopCommand());
         registerCommands(new TimeCommand());
     }
 

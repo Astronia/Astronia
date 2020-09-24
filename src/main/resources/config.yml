@@ -1,0 +1,24 @@
+### Backend Settings ###
+backend:
+  driver: "MONGO" # MONGO, REDIS (MYSQL & SQLITE IN PROGRESS)
+  sqlite:
+    fileName: "storage.db"
+  mysql:
+    host: "localhost"
+    port: 3306
+    username: "root"
+    password: "password"
+    database: "astronia"
+  redis:
+    host: "localhost"
+    port: 6379
+    pass: "" # Leave empty for no authentication
+  mongo:
+    host: "localhost"
+    port: 27017
+    database: "astronia"
+    auth:
+      enable: false
+      username: "root"
+      password: "password"
+      authDb: "admin"

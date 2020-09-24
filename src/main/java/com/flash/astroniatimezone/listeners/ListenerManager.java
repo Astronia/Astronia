@@ -1,6 +1,8 @@
 package com.flash.astroniatimezone.listeners;
 
 import com.flash.astroniatimezone.Main;
+import com.flash.astroniatimezone.listeners.player.PlayerListener;
+import com.flash.astroniatimezone.listeners.player.ScytherListener;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -16,6 +18,8 @@ public class ListenerManager {
     }
 
     public void registerListeners() {
+        registerListener(new PlayerListener());
+        registerListener(new ScytherListener());
     }
 
     public void registerListener(Listener listener) {
