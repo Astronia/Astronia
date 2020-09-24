@@ -24,7 +24,7 @@ public class CaneTopCommand {
         sender.sendMessage(C.color("&cTop 10 Cane Leaders"));
         for (int i = 0; i < 10; i++) {
             if (values.size() > i)
-                sender.sendMessage(C.color("&6" + i + 1 + ". &a" + AstroniaProfile.getByUuid(values.get(i).getKey()).getName() + " - " + values.get(i).getValue()));
+                sender.sendMessage(C.color("&a" + i + 1 + ". &f" + AstroniaProfile.getByUuid(values.get(i).getKey()).getName() + " - " + values.get(i).getValue()));
         }
     }
 
