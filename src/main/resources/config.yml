@@ -22,3 +22,12 @@ backend:
       username: "root"
       password: "password"
       authDb: "admin"
+
+### Server Settings ###
+server:
+  name: "Astronia"
+  website: "https://astronia.com"
+  store: "https://store.astronia.com"
+  color:
+    primary: "&6"
+    secondary: "&e"

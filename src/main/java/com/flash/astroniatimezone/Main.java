@@ -9,6 +9,7 @@ import com.flash.astroniatimezone.backend.creds.RedisCredentials;
 import com.flash.astroniatimezone.command.CommandManager;
 import com.flash.astroniatimezone.game.player.AstroniaProfile;
 import com.flash.astroniatimezone.listeners.ListenerManager;
+import com.flash.astroniatimezone.utils.Locale;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,6 +27,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
+        Locale.load(this, false);
 
         BackendType type = BackendType.getOrDefault(getConfig().getString("backend.driver"));
         switch (type) {

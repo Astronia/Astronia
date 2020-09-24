@@ -5,6 +5,7 @@ import com.flash.astroniatimezone.api.chat.C;
 import com.flash.astroniatimezone.api.command.Command;
 import com.flash.astroniatimezone.api.command.CommandData;
 import com.flash.astroniatimezone.game.player.AstroniaProfile;
+import com.flash.astroniatimezone.utils.Locale;
 import com.flash.astroniatimezone.utils.player.PlayerUtils;
 import org.bukkit.command.CommandSender;
 
@@ -21,10 +22,13 @@ public class CaneTopCommand {
 
         List<Map.Entry<UUID, Integer>> values = sortByValue(Main.getInstance().getBackend().getTopTenSugarcane());
 
-        sender.sendMessage(C.color("&cTop 10 Cane Leaders"));
+        sender.sendMessage(Locale.SUGAR_CANE_TOP_INTRODUCTION.toString());
         for (int i = 0; i < 10; i++) {
             if (values.size() > i)
-                sender.sendMessage(C.color("&a" + i + 1 + ". &f" + AstroniaProfile.getByUuid(values.get(i).getKey()).getName() + " - " + values.get(i).getValue()));
+                sender.sendMessage(Locale.SUGAR_CANE_LEADERBOARD_MESSAGE.toString()
+                        .replace("%number%", Integer.toString(i))
+                        .replace("%name%", AstroniaProfile.getByUuid(values.get(i).getKey()).getName())
+                        .replace("%value", Integer.toString(values.get(i).getValue())));
         }
     }
 
