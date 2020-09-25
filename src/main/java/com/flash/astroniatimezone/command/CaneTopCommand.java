@@ -26,9 +26,9 @@ public class CaneTopCommand {
         for (int i = 0; i < 10; i++) {
             if (values.size() > i)
                 sender.sendMessage(Locale.SUGAR_CANE_LEADERBOARD_MESSAGE.toString()
-                        .replace("%number%", Integer.toString(i))
+                        .replace("%number%", Integer.toString(i) + 1)
                         .replace("%name%", AstroniaProfile.getByUuid(values.get(i).getKey()).getName())
-                        .replace("%value", Integer.toString(values.get(i).getValue())));
+                        .replace("%value%", Integer.toString(values.get(i).getValue())));
         }
     }
 

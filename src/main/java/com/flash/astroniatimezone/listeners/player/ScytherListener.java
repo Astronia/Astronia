@@ -19,7 +19,7 @@ public class ScytherListener implements Listener {
         if (event.getBlock().getType() != Material.SUGAR_CANE_BLOCK)
             return;
 
-        if (event.getPlayer().getItemOnCursor() != null && ScytherAPI.isHarvesterItem(event.getPlayer().getItemOnCursor()))
+        if (event.getPlayer().getItemOnCursor() != null && ScytherAPI.isHarvesterItem(event.getPlayer().getInventory().getItemInMainHand()))
             return;
 
         int amount = 0;
@@ -30,13 +30,11 @@ public class ScytherListener implements Listener {
                 amount++;
         }
 
-        System.out.println(amount);
-
         StatisticType type = StatisticType.getByMaterial(Material.SUGAR_CANE_BLOCK);
         AstroniaProfile profile = AstroniaProfile.getByPlayer(event.getPlayer());
         AstroniaStatistic statisticObj = profile.getStatistic(type);
         if(statisticObj != null) {
-            for (int i = 0; i < amount + 1; i++) {
+            for (int i = 0; i < amount; i++) {
                 profile.updateStatistic(statisticObj.Increment());
             }
 
@@ -60,6 +58,8 @@ public class ScytherListener implements Listener {
             profile.save();
         }
     }
+
+    //TODO: Handle Drop Multiplier
 
     @EventHandler
     public void onAutoCollect(ScytherAutocollectEvent event) {
